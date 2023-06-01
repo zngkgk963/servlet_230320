@@ -10,31 +10,21 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
 <body>
-
-	<%
-		// BMI =  몸무게 / ((키 / 100.0) * (키 / 100.0));
-		int height = Integer.parseInt(request.getParameter("height"));
-		int weight = Integer.parseInt(request.getParameter("weight"));
-		// out.print(height + "<br>" + weight);
-		double bmi = weight / ((height / 100.0) * (height / 100.0));
-		
-		String result = null;
-		
-		if (bmi <= 20) {
-			result = "저체중";
-		}else if (bmi <= 25) {
-			result = "정상";
-		}else if (bmi <= 30) {
-			result = "과체중";
-		}else {
-			result = "비만";
-		}
-	%>
 	<div class="container">
-		<h2>BMI 측정 결과</h2>
-		<div class="display-4">당신은 <span class="text-info"><%= result %></span> 입니다.</div>
-		BMI 수치: <%= bmi %>
+		<h1>길이 변환</h1>
+		<form method="post" action="/lesson02/quiz04_1.jsp">
+			<div class="d-flex align-items-end">
+				<input type="text" class="form-control col-2" name="length" placeholder="cm를 입력하세요">cm
+			</div>
+			
+			<div>
+				<label>인치 <input type="checkbox" name="type" value="인치"></label>
+				<label>야드 <input type="checkbox" name="type" value="야드"></label>
+				<label>피트 <input type="checkbox" name="type" value="피트"></label>
+				<label>미터 <input type="checkbox" name="type" value="미터"></label><br>			
+			</div>
+			<button type="submit" class="btn btn-success" value="변환하기">변환하기</button>
+		</form>
 	</div>
-	
 </body>
 </html>

@@ -12,29 +12,42 @@
 <body>
 
 	<%
-		// BMI =  몸무게 / ((키 / 100.0) * (키 / 100.0));
-		int height = Integer.parseInt(request.getParameter("height"));
-		int weight = Integer.parseInt(request.getParameter("weight"));
-		// out.print(height + "<br>" + weight);
-		double bmi = weight / ((height / 100.0) * (height / 100.0));
-		
-		String result = null;
-		
-		if (bmi <= 20) {
-			result = "저체중";
-		}else if (bmi <= 25) {
-			result = "정상";
-		}else if (bmi <= 30) {
-			result = "과체중";
-		}else {
-			result = "비만";
-		}
-	%>
-	<div class="container">
-		<h2>BMI 측정 결과</h2>
-		<div class="display-4">당신은 <span class="text-info"><%= result %></span> 입니다.</div>
-		BMI 수치: <%= bmi %>
-	</div>
+		// inch = cm / 2.54
+		// yard = cm /91.44
+		// feet = cm /30.48
+		// m = cm / 100
+		int cm = Integer.valueOf(request.getParameter("length"));
 	
+		String[] typeArr = request.getParameterValues("type");
+		
+		double inch = cm / 2.54;
+		double yard = cm /91.44;
+		double feet = cm /30.48;
+		double m = cm / 100.0;
+		
+	%>
+	
+	<div class="container">
+		<h1>길이 변환 결과</h1>
+		<h2><%= cm %>cm</h2>
+		<hr>
+		<h2>
+			<%
+				if (typeArr != null) {
+					for (String type: typeArr) {
+						if (type.equals("인치")) {
+							out.print(inch + "in<br>");
+						} else if (type.equals("야드")) {
+							out.print(yard + "yd<br>");
+						} else if (type.equals("피트")) {
+							out.print(feet + "ft<br>");
+						} else if (type.equals("미터")) {
+							out.print(m + "m");
+						}
+					}
+				}
+			%>
+		</h2>
+	</div>
 </body>
 </html>
