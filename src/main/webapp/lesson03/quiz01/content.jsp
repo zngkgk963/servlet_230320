@@ -39,27 +39,32 @@
     list.add(map);
     map = new HashMap<String, String>() {{ put("ch", "121"); put("name", "KBSN 스포츠"); put("category", "스포츠"); } };
     list.add(map);
-%>
+%>	
+
 <table class="table text-center">
 	<thead>
-		<%-- row class를 설정하면 12칸 기준으로 영역을 잡을 수 있다. --%>
-		<tr class="row">
-			<th class="col-3">채널</th>
-			<th class="col-4">채널명</th>
-			<th class="col-5">카테고리</th>
+		<tr>
+			<th>채널</th>
+			<th>채널명</th>
+			<th>카테고리</th>
 		</tr>
 	</thead>
 	<tbody>
-	<%
-	for (Map<String, String> item : list) {
-	%>
-		<tr class="row">
-			<td class="col-3"><%=item.get("ch")%></td>
-			<td class="col-4"><%=item.get("name")%></td>
-			<td class="col-5"><%=item.get("category")%></td>
+		<%
+		String category = request.getParameter("category"); // 지상파
+
+		for (Map<String, String> item : list) {
+			// 카테고리가 null일 때(전체) 또는 카테고리명이 일치할 때
+			if (category == null || item.get("category").equals(category)) {
+		%>
+		<tr>
+			<td><%=item.get("ch")%></td>
+			<td><%=item.get("name")%></td>
+			<td><%=item.get("category")%></td>
 		</tr>
-	<%
+		<%
+			}
 		}
-	%>
+		%>
 	</tbody>
 </table>
