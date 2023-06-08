@@ -80,7 +80,7 @@
 				<tr class="row">
 					<td class="col-1"><%=item.get("id") %></td>
 					<td class="col-2"><img src="<%=item.get("image") %>" width="50" alt="표지"></td>
-					<td class="col-9"><a href="/lesson02/quiz08_1.jsp?id=<%=item.get("id") %>" class="text-decoration-none"><%=item.get("title") %></a></td>
+					<td class="col-9"><a href="/Test/lesson02/quiz08_1.jsp?id=<%=item.get("id") %>" class="text-decoration-none"><%=item.get("title") %></a></td>
 				</tr>
 			<%
 				}
